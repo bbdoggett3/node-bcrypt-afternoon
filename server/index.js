@@ -22,6 +22,7 @@ app.post('/auth/login', authCrtl.login)
 app.get('/auth/logout', authCrtl.logout)
 app.get('/api/treasure/dragon', treasureCrtl.dragonTreasure)
 app.get('/api/treasure/user', auth.usersOnly, treasureCrtl.getUserTreasure)
+app.post('/api/treasure/user', auth.usersOnly, treasureCrtl.addUserTreasure)
 
 massive({
     connectionString: CONNECTION_STRING,
