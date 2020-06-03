@@ -17,12 +17,15 @@ app.use(session({
 }));
 
 //ENDPOINTS 
+//user navbar
 app.post('/auth/register', authCrtl.register)
 app.post('/auth/login', authCrtl.login)
 app.get('/auth/logout', authCrtl.logout)
+//treasures
 app.get('/api/treasure/dragon', treasureCrtl.dragonTreasure)
 app.get('/api/treasure/user', auth.usersOnly, treasureCrtl.getUserTreasure)
 app.post('/api/treasure/user', auth.usersOnly, treasureCrtl.addUserTreasure)
+app.get('/api/treasure/all', auth.usersOnly, auth.adminsOnly, treasureCrtl.getAllTreasure);
 
 massive({
     connectionString: CONNECTION_STRING,
